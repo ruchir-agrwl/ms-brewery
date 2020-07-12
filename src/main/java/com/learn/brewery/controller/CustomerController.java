@@ -24,4 +24,6 @@ public class CustomerController {
     public ResponseEntity getCustomerById(@PathVariable UUID custId){
         return new ResponseEntity(customerService.getCustomerById(custId), HttpStatus.OK);
     }
+
+    //TODO Create Post, Put and Delete Objects for Customer
 }
