@@ -29,4 +29,11 @@ public class BeerServiceImpl implements BeerService {
         System.out.println("Beer Update for the passed object completed");
         //TODO add update Beer implementation, based on the logic
     }
+
+    @Override
+    public void deleteBeerById(UUID beerId) {
+        System.out.println("Deleting Beer Object of BeerId => "+beerId);
+    }
+
+
 }

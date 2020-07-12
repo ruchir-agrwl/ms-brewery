@@ -37,4 +37,12 @@ public class BeerController {
         beerService.updateBeer(beerId, beerDto);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
+
+    //Important thing to note here is the @ResponseStatus Annotation,
+    //This is considered to a alternate method to send response apart from using ResponseEntity Object
+    @DeleteMapping({"/{beerId}"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteBeer(@PathVariable UUID beerId){
+        beerService.deleteBeerById(beerId);
+    }
 }
