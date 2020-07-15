@@ -15,4 +15,26 @@ public class CustomerServiceImpl implements  CustomerService{
                 .lastName("A V")
                 .build();
     }
+
+    @Override
+    public CustomerDto saveCustomerDto(CustomerDto customerDto) {
+        System.out.println("Saving Customer Object");
+        return CustomerDto.builder()
+                .customerId(UUID.randomUUID())
+                .firstName("Manu")
+                .build();
+    }
+
+    @Override
+    public CustomerDto updateCustomerDto(UUID custId, CustomerDto customerDto) {
+        System.out.println("Updating Customer Dto");
+        return CustomerDto.builder()
+                .customerId(custId)
+                .build();
+    }
+
+    @Override
+    public void deleteCustomerDto(UUID custId) {
+        System.out.println("Deleting the customer of cust id => "+custId);
+    }
 }

@@ -1,12 +1,10 @@
 package com.learn.brewery.controller;
 
 import com.learn.brewery.services.CustomerService;
+import com.learn.brewery.web.model.CustomerDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -25,5 +23,21 @@ public class CustomerController {
         return new ResponseEntity(customerService.getCustomerById(custId), HttpStatus.OK);
     }
 
-    //TODO Create Post, Put and Delete Objects for Customer
+    @PostMapping
+    public ResponseEntity saveCustomerDto(@RequestBody  CustomerDto customerDto){
+        customerService.saveCustomerDto(customerDto);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping({"/{custId}"})
+    public ResponseEntity updateCustomerDto(@PathVariable UUID custId, @RequestBody CustomerDto customerDto){
+        customerService.updateCustomerDto(custId,customerDto);
+        return new ResponseEntity(HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping({"/{custId}"})
+    public ResponseEntity deleteCustomerDto(@PathVariable UUID custId){
+        customerService.deleteCustomerDto(custId);
+        return new ResponseEntity(HttpStatus.ACCEPTED);
+    }
 }
